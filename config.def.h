@@ -12,9 +12,9 @@ static const EGLint egl_config[] = {
 };
 
 /*
- * Star Nest by Pablo Román Andrioli"
- * https://www.shadertoy.com/view/XlfGRj"
- * This content is under the MIT License."
+ * Star Nest by Pablo Román Andrioli
+ * https://www.shadertoy.com/view/XlfGRj
+ * This content is under the MIT License.
  */
 static const char default_fragment_shader[] =
     "#define iterations 17\n"
