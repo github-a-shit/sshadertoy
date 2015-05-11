@@ -311,9 +311,9 @@ void render(float abstime)
 {
 	static const GLfloat vertices[] = {
 		-1.0f, -1.0f,
-		1.0f, -1.0f,
-		-1.0f, 1.0f,
-		1.0f, 1.0f,
+		 1.0f, -1.0f,
+		-1.0f,  1.0f,
+		 1.0f,  1.0f,
 	};
 
 	if(uniform_gtime >= 0)
