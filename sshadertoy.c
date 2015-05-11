@@ -298,9 +298,8 @@ bool process_events(void)
 
 	while (XPending(x_display)) {
 		XNextEvent(x_display, &ev);
-		if (!process_event(&ev)) {
+		if (!process_event(&ev))
 			done = true;
-		}
 	}
 
 	return !done;
@@ -335,9 +334,8 @@ int main(int argc, char **argv)
 	monotonic_time(&start);
 
 	for (;;) {
-		if (!process_events()) {
+		if (!process_events())
 			break;
-		}
 		render((float)timespec_diff(&start, &cur));
 		monotonic_time(&cur);
 	}
