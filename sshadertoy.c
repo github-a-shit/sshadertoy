@@ -3,7 +3,6 @@
 #include <stdbool.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdnoreturn.h>
 #include <string.h>
 #include <time.h>
 #include <EGL/egl.h>
@@ -57,7 +56,7 @@ static GLint uniform_mouse;
 static GLint uniform_res;
 static GLint uniform_srate;
 
-static noreturn
+static
 void die(const char *format, ...)
 {
 	va_list args;
