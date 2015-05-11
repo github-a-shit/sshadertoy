@@ -28,10 +28,11 @@ static const char fragment_shader_header[] =
     "uniform vec4 iMouse;"
     "uniform vec4 iDate;"
     "uniform float iSampleRate;"
-    "uniform vec3 iChannelResolution[4];";
-
-static const char fragment_shader_sampler[] =
-    "uniform sampler%s iChannel%u;\n";
+    "uniform vec3 iChannelResolution[4];"
+    "uniform sampler2D iChannel0;"
+    "uniform sampler2D iChannel1;"
+    "uniform sampler2D iChannel2;"
+    "uniform sampler2D iChannel3;\n";
 
 static const char fragment_shader_footer[] =
     "\nvoid main(){mainImage(gl_FragColor,gl_FragCoord.xy);}";
@@ -147,7 +148,7 @@ void startup(void)
 	EGLint vid, ncfg, len, success;
 	EGLConfig cfg;
 	GLuint vtx, frag;
-	const char *sources[8];
+	const char *sources[4];
 	char* log;
 
 	if (!(x_display = XOpenDisplay(NULL)))
@@ -210,13 +211,9 @@ void startup(void)
 
 	sources[0] = common_shader_header;
 	sources[1] = fragment_shader_header;
-	sources[2] = "uniform sampler2D iChannel0;\n";
-	sources[3] = "uniform sampler2D iChannel1;\n";
-	sources[4] = "uniform sampler2D iChannel2;\n";
-	sources[5] = "uniform sampler2D iChannel3;\n";
-	sources[6] = default_fragment_shader;
-	sources[7] = fragment_shader_footer;
-	frag = compile_shader(GL_FRAGMENT_SHADER, 8, sources);
+	sources[2] = default_fragment_shader;
+	sources[3] = fragment_shader_footer;
+	frag = compile_shader(GL_FRAGMENT_SHADER, 4, sources);
 
 	shader_program = glCreateProgram();
 	glAttachShader(shader_program, vtx);
